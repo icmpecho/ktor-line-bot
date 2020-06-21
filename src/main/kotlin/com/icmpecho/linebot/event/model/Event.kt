@@ -16,21 +16,21 @@ sealed class Source {
     @Serializable
     @SerialName("user")
     data class User(
-        @SerialName("userId") val userId: String
+        val userId: String
     ):Source()
 
     @Serializable
     @SerialName("group")
     data class Group(
-        @SerialName("groupId") val groupId: String,
-        @SerialName("userId") val userId: String = ""
+        val groupId: String,
+        val userId: String = ""
     ):Source()
 
     @Serializable
     @SerialName("room")
     data class Room(
-        @SerialName("roomId") val roomId: String,
-        @SerialName("userId") val userId: String = ""
+        val roomId: String,
+        val userId: String = ""
     ):Source()
 }
 
@@ -40,9 +40,9 @@ sealed class Event {
     @Serializable
     @SerialName("message")
     data class MessageEvent(
-        @SerialName("replyToken") val replyToken: String,
-        @SerialName("mode") val mode: Mode = Mode.UNKNOWN,
-        @SerialName("timestamp") val timestamp: Long,
-        @SerialName("source") val source: Source
+        val replyToken: String,
+        val mode: Mode = Mode.UNKNOWN,
+        val timestamp: Long,
+        val source: Source
     ):Event()
 }
