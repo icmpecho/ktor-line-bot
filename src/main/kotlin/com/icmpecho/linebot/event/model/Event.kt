@@ -9,9 +9,10 @@ sealed class Event {
     @Serializable
     @SerialName("message")
     data class MessageEvent(
-        val replyToken: String,
         val mode: Mode = Mode.UNKNOWN,
         val timestamp: Long,
-        val source: Source
+        val source: Source,
+        val replyToken: String,
+        val message: Message
     ):Event()
 }
