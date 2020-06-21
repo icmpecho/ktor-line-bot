@@ -3,19 +3,26 @@ package com.icmpecho
 import com.icmpecho.linebot.event.model.WebHookRequest
 import io.ktor.application.*
 import io.ktor.features.ContentNegotiation
-import io.ktor.gson.gson
 import io.ktor.request.receive
 import io.ktor.response.*
 import io.ktor.routing.get
 import io.ktor.routing.post
 import io.ktor.routing.routing
+import io.ktor.serialization.DefaultJsonConfiguration
+import io.ktor.serialization.json
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
 @Suppress("unused") // Referenced in application.conf
 fun Application.module(testing: Boolean = false) {
     install(ContentNegotiation) {
-        gson {}
+        json(
+            DefaultJsonConfiguration.copy(
+                prettyPrint = true,
+                ignoreUnknownKeys = true,
+                useArrayPolymorphism = false
+            )
+        )
     }
     routing {
         get("/") {

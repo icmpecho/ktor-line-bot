@@ -1,7 +1,9 @@
 package com.icmpecho.linebot.event.model
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class WebHookRequest(
-    @SerializedName("events") val events: List<Event>
+    @SerialName("events") val events: List<Event>
 )
