@@ -18,6 +18,20 @@ sealed class Source {
     data class User(
         @SerialName("userId") val userId: String
     ):Source()
+
+    @Serializable
+    @SerialName("group")
+    data class Group(
+        @SerialName("groupId") val groupId: String,
+        @SerialName("userId") val userId: String = ""
+    ):Source()
+
+    @Serializable
+    @SerialName("room")
+    data class Room(
+        @SerialName("roomId") val roomId: String,
+        @SerialName("userId") val userId: String = ""
+    ):Source()
 }
 
 @Serializable
